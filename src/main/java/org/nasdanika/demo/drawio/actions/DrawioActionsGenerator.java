@@ -204,7 +204,7 @@ public class DrawioActionsGenerator {
 				jsTree.put("state", Collections.singletonMap("key", "nsd-site-map-tree"));
 				
 				// Deletes selection from state
-				String filter = NavigationPanelConsumerFactoryAdapter.CLEAR_STATE_FILTER + " tree.search.search_callback = (results, node) => results.split(' ').includes(node.original['data-nsd-action-uuid']);";
+				String filter = NavigationPanelConsumerFactoryAdapter.CLEAR_STATE_FILTER + " tree.search.search_callback = (results, node) => results.split(' ').includes(node.original['data-nsd-label-uuid']);";
 				
 				return jsTreeFactory.bind("#nsd-site-map-tree", jsTree, filter, null).toString();				
 			};			
@@ -297,7 +297,7 @@ public class DrawioActionsGenerator {
 		
 		try {
 			JsTreeNode jsTreeNode = adapter.create(context).execute(progressMonitor);
-			jsTreeNode.attribute(Util.DATA_NSD_ACTION_UUID_ATTRIBUTE, treeAction.getUuid());
+			jsTreeNode.attribute(Util.DATA_NSD_LABEL_UUID_ATTRIBUTE, treeAction.getUuid());
 			return jsTreeNode;
 		} catch (Exception e) {
 			throw new NasdanikaException(e);
