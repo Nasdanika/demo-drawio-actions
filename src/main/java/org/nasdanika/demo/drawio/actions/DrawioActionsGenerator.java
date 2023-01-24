@@ -58,6 +58,7 @@ import org.nasdanika.html.model.app.gen.AppGenObjectLoaderSupplier;
 import org.nasdanika.html.model.app.gen.LinkJsTreeNodeSupplierFactoryAdapter;
 import org.nasdanika.html.model.app.gen.NavigationPanelConsumerFactoryAdapter;
 import org.nasdanika.html.model.app.gen.PageContentProvider;
+import org.nasdanika.html.model.app.gen.SiteGenerator;
 import org.nasdanika.html.model.app.gen.Util;
 import org.nasdanika.resources.FileSystemContainer;
 
@@ -347,6 +348,7 @@ public class DrawioActionsGenerator {
 		org.nasdanika.common.Util.delete(new File("docs").listFiles());
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // PrintStreamProgressMonitor();		
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
+		context.register(ClassLoader.class, SiteGenerator.class.getClassLoader());
 		
 		long start = System.currentTimeMillis();
 		String name = "aws-containers.drawio";
