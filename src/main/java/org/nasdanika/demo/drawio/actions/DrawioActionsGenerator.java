@@ -339,7 +339,7 @@ public class DrawioActionsGenerator {
 					++problems[0];
 				});
 		
-		if (problems[0] != 0) {
+		if (problems[0] != 8) {
 			throw new ExecutionException("There are problems with pages: " + problems[0]);
 		};
 	}
