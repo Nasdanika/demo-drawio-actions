@@ -93,7 +93,7 @@ public class DrawioActionsGenerator {
 			
 			@Override
 			protected Action createDocumentAction(org.nasdanika.drawio.Document document) {
-				String actionsResource = "model/root-action.yml";
+				String actionsResource = "root-action.yml";
 				Action root = (Action) Objects.requireNonNull(AppGenObjectLoaderSupplier.loadObject(actionsResource, diagnosticConsumer, context, progressMonitor), "Loaded null from " + actionsResource);
 				
 				return EcoreUtil.copy(root);
@@ -106,7 +106,7 @@ public class DrawioActionsGenerator {
 			
 		});
 		
-		File modelFile = new File("model/" + name);
+		File modelFile = new File(name);
 		if (!modelFile.isFile()) {
 			throw new IllegalArgumentException("Not a file: " + modelFile);
 		}
@@ -114,7 +114,7 @@ public class DrawioActionsGenerator {
 		
 		Action root = (Action) modelResource.getContents().get(0);
 		
-		String searchActionResource = "model/search-action.yml";
+		String searchActionResource = "search-action.yml";
 		Action searchAction = (Action) Objects.requireNonNull(AppGenObjectLoaderSupplier.loadObject(searchActionResource, diagnosticConsumer, context, progressMonitor), "Loaded null from " + searchActionResource);
 		root.getChildren().add(searchAction);
 		
@@ -127,7 +127,7 @@ public class DrawioActionsGenerator {
 		Resource containerResource = containerResourceSet.createResource(containerModelUri);
 		containerResource.getContents().add(container);
 		
-		String pageTemplateResource = "model/page-template.yml";
+		String pageTemplateResource = "page-template.yml";
 		org.nasdanika.html.model.bootstrap.Page pageTemplate = (org.nasdanika.html.model.bootstrap.Page) Objects.requireNonNull(AppGenObjectLoaderSupplier.loadObject(pageTemplateResource, diagnosticConsumer, context, progressMonitor), "Loaded null from " + pageTemplateResource);
 		
 		containerResource.save(null);		
